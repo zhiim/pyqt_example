@@ -7,20 +7,7 @@ from qfluentwidgets import (NavigationInterface,NavigationItemPosition,
 from qfluentwidgets import FluentIcon as FIF
 from qframelesswindow import FramelessWindow, StandardTitleBar
 from view.ula_interface import ULAInterface
-
-
-class Widget(QFrame):
-
-    def __init__(self, text: str, parent=None):
-        super().__init__(parent=parent)
-        self.setObjectName(text.replace(' ', '-'))
-        self.label = QLabel(text, self)
-        self.label.setAlignment(Qt.AlignCenter)
-        self.hBoxLayout = QHBoxLayout(self)
-        self.hBoxLayout.addWidget(self.label, 1, Qt.AlignCenter)
-
-        # leave some space for title bar
-        self.hBoxLayout.setContentsMargins(0, 32, 0, 0)
+from components.sample_widget import SampleWidget
 
 
 class Window(FramelessWindow):
@@ -43,10 +30,10 @@ class Window(FramelessWindow):
 
         # 创建QstackedWidget中将要包含的Widgets
         self.ula_interface = ULAInterface()
-        self.option2 = Widget('Music Interface', self)
-        self.option3 = Widget('Video Interface', self)
-        self.option4 = Widget('Folder Interface', self)
-        self.setting_interface = Widget('Setting Interface', self)
+        self.option2 = SampleWidget('Music Interface', self)
+        self.option3 = SampleWidget('Video Interface', self)
+        self.option4 = SampleWidget('Folder Interface', self)
+        self.setting_interface = SampleWidget('Setting Interface', self)
 
         # initialize layout
         self.initLayout()
