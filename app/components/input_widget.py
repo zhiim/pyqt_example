@@ -5,27 +5,43 @@ from PyQt5.QtWidgets import QApplication, QWidget, QHBoxLayout, QLabel
 
 from qfluentwidgets import LineEdit
 
+class InputWidget(QWidget):
 
-class Demo(QWidget):
+    def __init__(self, text_label="Input", text_input="Input please",
+                  label_length=80, input_length=150):
+        """
+        a widget consists of a label and an input box
 
-    def __init__(self, text):
+        Args:
+            text_label: text to show in label
+            text_input: text to show in input box
+            label_length: length of label
+            input_length: length of input box
+        """
+
         super().__init__()
         self.hBoxLayout = QHBoxLayout(self)  # 新建HBox容器
         self.lineEdit = LineEdit(self)  # 新建输入框
-        self.label = QLabel(text, self)  # 新建文本标签
+        self.label = QLabel(text_label, self)  # 新建文本标签
 
-        self.resize(280, 35)  # 设置窗口大小
+        self.setStyleSheet("background: white")
+        self.label.setStyleSheet('''font: 15px 'Segoe UI';
+                                    background: rgb(242,242,242);
+                                    border-radius: 5px;
+                                    ''')
+        self.label.setAlignment(Qt.AlignCenter)  # 文字居中
+
         self.hBoxLayout.setAlignment(Qt.AlignCenter)
 
         # 将lineEdit和label加入容器
         self.hBoxLayout.addWidget(self.label, 0, Qt.AlignCenter)
         self.hBoxLayout.addWidget(self.lineEdit, 0, Qt.AlignCenter)
 
-        self.lineEdit.setFixedSize(200, 33)
+        self.lineEdit.setFixedSize(input_length, 33)
         self.lineEdit.setClearButtonEnabled(True)
-        self.lineEdit.setPlaceholderText('Search icon')
+        self.lineEdit.setPlaceholderText(text_input)
         
-        self.label.setFixedSize(50, 33)
+        self.label.setFixedSize(label_length, 33)
 
 
 if __name__ == '__main__':
@@ -36,6 +52,6 @@ if __name__ == '__main__':
     QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
 
     app = QApplication(sys.argv)
-    w = Demo('snr')
+    w = InputWidget('snr')
     w.show()
     app.exec_()

@@ -1,6 +1,6 @@
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QApplication, QFrame, QStackedWidget, QHBoxLayout, QLabel
+from PyQt5.QtWidgets import QApplication, QStackedWidget, QHBoxLayout
 
 from qfluentwidgets import (NavigationInterface,NavigationItemPosition,
                             qrouter)
