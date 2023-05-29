@@ -22,7 +22,7 @@ class ParaWidget(QFrame):
         super().__init__()
 
         self.vbox = QVBoxLayout(self)
-        self.flowbox = FlowLayout()
+        self.flowbox = FlowLayout()  # PyQt-Fluent-Widgets定义的流
 
         self.title = QLabel(title, self)
         self.title.setStyleSheet('''
@@ -32,3 +32,10 @@ class ParaWidget(QFrame):
 
         self.vbox.addWidget(self.title)
         self.vbox.addLayout(self.flowbox, 1)
+
+    def addItem(self):
+        """
+        在ParaWidget内添加自定以组件InputWidget(带标签的输入框)
+        """
+
+
