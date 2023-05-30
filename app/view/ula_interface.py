@@ -4,7 +4,7 @@ import sys
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QWidget, QStackedWidget, QVBoxLayout, QLabel
 
-from qfluentwidgets import Pivot, setTheme, Theme
+from qfluentwidgets import Pivot
 
 
 class ULAInterface(QWidget):

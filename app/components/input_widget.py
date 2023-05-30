@@ -8,7 +8,7 @@ from qfluentwidgets import LineEdit
 class InputWidget(QWidget):
 
     def __init__(self, text_label="Input", text_input="Input please",
-                  label_length=80, input_length=150):
+                  label_length=120, input_length=100):
         """
         a widget consists of a label and an input box
 
@@ -24,9 +24,9 @@ class InputWidget(QWidget):
         self.lineEdit = LineEdit(self)  # 新建输入框
         self.label = QLabel(text_label, self)  # 新建文本标签
 
-        self.setStyleSheet("background: white")
+        self.setStyleSheet("background: rgb(242,242,242)")
         self.label.setStyleSheet('''font: 15px 'Segoe UI';
-                                    background: rgb(242,242,242);
+                                    background: white;
                                     border-radius: 5px;
                                     ''')
         self.label.setAlignment(Qt.AlignCenter)  # 文字居中

@@ -1,12 +1,8 @@
-import typing
-from PyQt5 import QtCore
+import sys
 from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QApplication, QFrame, QStackedWidget, QVBoxLayout, QLabel
+from PyQt5.QtWidgets import QApplication, QFrame, QVBoxLayout, QLabel
 
 from qfluentwidgets import FlowLayout
-from qfluentwidgets import FluentIcon as FIF
-from qframelesswindow import FramelessWindow, StandardTitleBar
 
 from input_widget import InputWidget
 
@@ -30,12 +26,41 @@ class ParaWidget(QFrame):
             font-weight: bold;
         ''')
 
+        self.flowbox.setVerticalSpacing(5)
+        self.flowbox.setHorizontalSpacing(10)
+
         self.vbox.addWidget(self.title)
         self.vbox.addLayout(self.flowbox, 1)
 
-    def addItem(self):
+        self.vbox.setAlignment(Qt.AlignVCenter)
+        self.vbox.addStretch(1)
+
+    def addItem(self, text_label, text_input, label_length=120, input_length=100):
         """
         在ParaWidget内添加自定以组件InputWidget(带标签的输入框)
+
+        Args:
+            text_label: text to show in label
+            text_input: text to show in input box
+            label_length: length of label
+            input_length: length of input box
         """
 
+        # 新建自定义输入框组件InputWidget
+        input = InputWidget(text_label, text_input, label_length, input_length)
+        self.flowbox.addWidget(input)
 
+
+if __name__ == '__main__':
+    # enable dpi scale
+    QApplication.setHighDpiScaleFactorRoundingPolicy(
+        Qt.HighDpiScaleFactorRoundingPolicy.PassThrough)
+    QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
+    QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
+
+    app = QApplication(sys.argv)
+    w = ParaWidget('阵列参数')
+    w.show()
+    w.addItem(text_label='阵元数（个）', text_input="8")
+    w.addItem(text_label='阵元间距（倍波长）', text_input="0.5", label_length=150)
+    app.exec_()
