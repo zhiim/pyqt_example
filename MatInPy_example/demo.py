@@ -1,5 +1,4 @@
 import matlab.engine
-import os
 
 # start a matlab process
 mat_eng = matlab.engine.start_matlab()

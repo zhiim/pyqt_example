@@ -3,7 +3,6 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication
 from view.main_windows import Window
 
-from view.ula.ula_music_page import ULAMUSIC
 
 # 设置UI可以缩放
 QApplication.setHighDpiScaleFactorRoundingPolicy(

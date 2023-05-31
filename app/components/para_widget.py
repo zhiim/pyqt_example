@@ -51,7 +51,7 @@ class ParaWidget(QFrame):
         # 新建自定义输入框组件InputWidget
         input = InputWidget(text_label, text_input, label_length, input_length)
         # 向self.btns中添加键值对
-        self.btns[text_label] = input
+        self.btns[text_label] = input.lineEdit
         self.flowbox.addWidget(input)
 
 
