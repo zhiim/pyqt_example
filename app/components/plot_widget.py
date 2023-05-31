@@ -11,7 +11,7 @@ import numpy as np
 # FigureCanvasQTAgg是matplotlib中定义的pyqt绘图组件
 class PlotWidget(FigureCanvasQTAgg):
 
-    def __init__(self, width=5, height=4, dpi=100):
+    def __init__(self, width=4, height=3, dpi=100):
         """widget to show matplotlib plotted 2d figure"""
         fig = Figure(figsize=(width, height), dpi=dpi)
         self.axis = fig.add_subplot(1, 1, 1)

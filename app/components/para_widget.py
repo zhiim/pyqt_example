@@ -1,10 +1,10 @@
 import sys
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QApplication, QFrame, QVBoxLayout, QLabel
+from PyQt5.QtWidgets import QApplication, QFrame, QVBoxLayout, QLabel, QHBoxLayout
 
 from qfluentwidgets import FlowLayout
 
-from input_widget import InputWidget
+from components.input_widget import InputWidget
 
 class ParaWidget(QFrame):
     def __init__(self, title):
@@ -29,11 +29,13 @@ class ParaWidget(QFrame):
         self.flowbox.setVerticalSpacing(5)
         self.flowbox.setHorizontalSpacing(10)
 
-        self.vbox.addWidget(self.title)
+        self.vbox.addWidget(self.title, 1)
         self.vbox.addLayout(self.flowbox, 1)
 
         self.vbox.setAlignment(Qt.AlignVCenter)
         self.vbox.addStretch(1)
+
+        self.btns = {}  # 用来保存添加的所有输入框，保存为dict键值对的形式
 
     def addItem(self, text_label, text_input, label_length=120, input_length=100):
         """
@@ -48,6 +50,8 @@ class ParaWidget(QFrame):
 
         # 新建自定义输入框组件InputWidget
         input = InputWidget(text_label, text_input, label_length, input_length)
+        # 向self.btns中添加键值对
+        self.btns[text_label] = input
         self.flowbox.addWidget(input)
 
 

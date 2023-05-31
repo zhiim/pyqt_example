@@ -6,7 +6,7 @@ from qfluentwidgets import (NavigationInterface,NavigationItemPosition,
                             qrouter)
 from qfluentwidgets import FluentIcon as FIF
 from qframelesswindow import FramelessWindow, StandardTitleBar
-from view.ula_interface import ULAInterface
+from view.ula.ula_interface import ULAInterface
 from components.sample_widget import SampleWidget
 
 

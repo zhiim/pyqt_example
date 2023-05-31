@@ -1,11 +1,10 @@
 # coding:utf-8
 import sys
-
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QWidget, QStackedWidget, QVBoxLayout, QLabel
-
 from qfluentwidgets import Pivot
 
+from view.ula.ula_music_page import ULAMUSIC
 
 class ULAInterface(QWidget):
 
@@ -28,7 +27,7 @@ class ULAInterface(QWidget):
         self.stackedWidget = QStackedWidget(self)
         self.vBoxLayout = QVBoxLayout(self)
 
-        self.MUSICInterface = QLabel('Song Interface', self)
+        self.MUSICInterface = ULAMUSIC()
         self.albumInterface = QLabel('Album Interface', self)
         self.artistInterface = QLabel('Artist Interface', self)
 
@@ -47,9 +46,8 @@ class ULAInterface(QWidget):
         self.stackedWidget.setCurrentWidget(self.MUSICInterface)
         self.pivot.setCurrentItem(self.MUSICInterface.objectName())
 
-    def addSubInterface(self, widget: QLabel, objectName, text):
+    def addSubInterface(self, widget: QWidget, objectName, text):
         widget.setObjectName(objectName)
-        widget.setAlignment(Qt.AlignCenter)
         self.stackedWidget.addWidget(widget)
         self.pivot.addItem(
             routeKey=objectName,

@@ -24,9 +24,8 @@ class InputWidget(QWidget):
         self.lineEdit = LineEdit(self)  # 新建输入框
         self.label = QLabel(text_label, self)  # 新建文本标签
 
-        self.setStyleSheet("background: rgb(242,242,242)")
         self.label.setStyleSheet('''font: 15px 'Segoe UI';
-                                    background: white;
+                                    background: rgb(242,242,242);
                                     border-radius: 5px;
                                     ''')
         self.label.setAlignment(Qt.AlignCenter)  # 文字居中
@@ -39,7 +38,7 @@ class InputWidget(QWidget):
 
         self.lineEdit.setFixedSize(input_length, 33)
         self.lineEdit.setClearButtonEnabled(True)
-        self.lineEdit.setPlaceholderText(text_input)
+        self.lineEdit.setText(text_input)
         
         self.label.setFixedSize(label_length, 33)
 
