@@ -50,14 +50,18 @@ class ULAMUSIC(QWidget):
 
     def plot(self):
 
+        # 使用输入框的内容更新数据
         self.ulaMusicData.updataValue(M=self.arrayPara.btns['阵元数（个）'].text(), 
                                       dd=self.arrayPara.btns['阵元间距（倍波长）'].text(), 
                                       snr=self.signalPara.btns['信噪比（dB）'].text(), 
                                       K=self.signalPara.btns['快拍数'].text(), 
                                       theta=self.signalPara.btns['入射角（度）'].text())
 
-        # 执行matlab函数得到输出
-        self.ulaMusicData.getMusicData()
+        # # 执行matlab函数得到输出
+        # self.ulaMusicData.getMusicData()
+
+        self.ulaMusicData.getDataTest()
+
         # 绘图
         self.plotwidget.update_plot(self.ulaMusicData.xdata, 
                                     self.ulaMusicData.ydata)

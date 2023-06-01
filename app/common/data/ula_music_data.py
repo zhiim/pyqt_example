@@ -1,4 +1,5 @@
 import matlab.engine
+import numpy as np
 
 class ULAMusicData():
 
@@ -18,7 +19,16 @@ class ULAMusicData():
         self.xdata = []  # 绘图使用的x轴值
         self.ydata = []  # 绘图使用的y轴值
 
-    def getMusicData(self):
+    def updataValue(self, M, dd, snr, K, theta):
+        """更新数据"""
+        self.M = int(M)
+        self.dd = float(dd)
+        self.snr = int(snr)
+        self.K = int(K)
+        self.theta = float(theta)
+
+    def getMusicDataMatlab(self):
+        """执行matlab脚本得到绘图需要的数据"""
         eng = matlab.engine.start_matlab()
         eng.addpath("common\scripts")  # 将matlab脚本添加到路径
         (self.xdata, self.ydata) = eng.music_ula(self.M, 
@@ -29,10 +39,7 @@ class ULAMusicData():
                                                  nargout=2)
         eng.quit()
 
-    def updataValue(self, M, dd, snr, K, theta):
-        self.M = float(M)
-        self.dd = float(dd)
-        self.snr = float(snr)
-        self.K = float(K)
-        self.theta = float(theta)
+    def getDataTest(self):
+        self.xdata = np.linspace(0, 2*np.pi, self.K)
+        self.ydata = np.sin(self.xdata)
         
