@@ -1,3 +1,4 @@
+# 参考examples中的navigation2
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QApplication, QStackedWidget, QHBoxLayout

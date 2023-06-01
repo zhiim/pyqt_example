@@ -11,19 +11,21 @@ class ULAMUSIC(QWidget):
         self.ulaMusicData = ULAMusicData()  # 页面数据
 
         self.vbox = QVBoxLayout(self)  # 垂直布局
-        self.hboxInVbox = QHBoxLayout(self)  # 最下方
-        self.vboxForBtn = QVBoxLayout(self)
+        self.hboxInVbox = QHBoxLayout(self)  # 绘图窗口和运行按钮之间水平排布
+        self.vboxForBtn = QVBoxLayout(self)  # 运行按钮被包含在此，用来使按钮在左上角
         self.arrayPara = ParaWidget('阵列参数')
         self.signalPara = ParaWidget('信号参数')
         self.plotwidget = PlotWidget(width=5, height=3)
         self.btn = PushButton('运行')
 
+        # 在阵列参数组件中添加输入框
         self.arrayPara.addItem(text_label='阵元数（个）', 
                                text_input=str(self.ulaMusicData.M))
         self.arrayPara.addItem(text_label='阵元间距（倍波长）', 
                                text_input=str(self.ulaMusicData.dd), 
                                label_length=150)
 
+        # 在信号参数组件中添加输入框
         self.signalPara.addItem(text_label='信噪比（dB）', 
                                 text_input=str(self.ulaMusicData.snr))
         self.signalPara.addItem(text_label='快拍数', 
@@ -32,16 +34,17 @@ class ULAMUSIC(QWidget):
                                 text_input=str(self.ulaMusicData.theta))
 
         self.vboxForBtn.addWidget(self.btn)
-        self.vboxForBtn.addStretch(1)
+        self.vboxForBtn.addStretch(1)  # 使按钮在vbox的最上方
         
         self.hboxInVbox.addWidget(self.plotwidget)
         self.hboxInVbox.addLayout(self.vboxForBtn)
-        self.hboxInVbox.addStretch(1)
+        self.hboxInVbox.addStretch(1)  # 使绘图框和按钮在最左方
         
         self.vbox.addWidget(self.arrayPara)
         self.vbox.addWidget(self.signalPara)
         self.vbox.addLayout(self.hboxInVbox, 1)
 
+        # 添加样式
         self.setStyleSheet('''
             background-color: rgb(249, 249, 249);
         ''')
@@ -49,7 +52,6 @@ class ULAMUSIC(QWidget):
         self.btn.clicked.connect(self.plot)  # 运行按钮与绘图绑定
 
     def plot(self):
-
         # 使用输入框的内容更新数据
         self.ulaMusicData.updataValue(M=self.arrayPara.btns['阵元数（个）'].text(), 
                                       dd=self.arrayPara.btns['阵元间距（倍波长）'].text(), 

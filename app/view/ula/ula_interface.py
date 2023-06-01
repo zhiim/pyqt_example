@@ -1,4 +1,4 @@
-# coding:utf-8
+# 参考example中的pivot
 import sys
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QWidget, QStackedWidget, QVBoxLayout, QLabel
